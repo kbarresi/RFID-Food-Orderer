@@ -15,8 +15,9 @@ void restPacketAdd(int code);
 void getPacket(void);
 void parseInPacket(void);
 void addPacketFood(int selection);
-
 int mealSelect(void);
+
+void hardReset(void);
 
 char packetBuffer[27];
 char inPacketBuffer[54];
@@ -112,7 +113,7 @@ void loop()
     {
       lcd.clear();
       lcd.print("Com Errors!");
-      return;
+      hardReset();
     }
     addPacketFood(mealSelection);
     sendPacket();
@@ -578,4 +579,7 @@ void addPacketFood(int selection)
   packetBuffer[9] = '\n';
 }
 
-
+void hardReset()
+{
+        asm volatile ("  jmp 0");
+}
