@@ -113,6 +113,7 @@ void loop()
     {
       lcd.clear();
       lcd.print("Com Errors!");
+      delay(5000);
       hardReset();
     }
     addPacketFood(mealSelection);
